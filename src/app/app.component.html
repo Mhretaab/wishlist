@@ -5,10 +5,20 @@
 
   <ng-template #showItems>
     <ul class="wish-list">
-      <li *ngFor="let wish of wishes">
+      <li *ngFor="let wish of wishes; index as ii">
         <div class="form-check">
           <label for="" class="form-check-label">
-            <input type="checkbox" class="checkbox"> {{wish.wishText}}
+            <!-- to bind data: javascript property of element inside [] -->
+             <!-- to bind event: event name inside () -->
+            <!-- [attr.data-index] custom attribute -->
+            <!-- $event to pass the event  -->
+            <input 
+            type="checkbox" 
+            class="checkbox" 
+            [checked]="wish.isCompleted" 
+            [attr.data-index]="ii"
+            (click)="toggleItem($event)"
+            > {{wish.wishText}}
           </label>
         </div>
       </li>
