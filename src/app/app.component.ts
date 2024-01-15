@@ -19,22 +19,21 @@ export class AppComponent {
 
   title = 'wishlist';
 
-  visibleWishes: WishItem[] = this.wishes;
+  get visibleWishes(): WishItem[] {
+    let value = this.listFilter;
+    if (value === '0') {
+      return this.wishes;
+    } else if (value === '1') {
+      return this.wishes.filter(item => !item.isCompleted);
+    } else {
+      return this.wishes.filter(item => item.isCompleted);
+    }
+  };
 
 
   addNewWish(): void {
     this.wishes.push(new WishItem(this.newWishText));
     this.newWishText = '';
-  }
-
-  filterChanged(event: any): void {
-    if (event === '0') {
-      this.visibleWishes = this.wishes;
-    } else if (event === '1') {
-      this.visibleWishes = this.wishes.filter(item => !item.isCompleted);
-    } else {
-      this.visibleWishes = this.wishes.filter(item => item.isCompleted);
-    }
   }
 
   toggleItem(wishItem: WishItem): void {
