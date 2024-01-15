@@ -17,7 +17,7 @@
             class="checkbox" 
             [checked]="wish.isCompleted" 
             [attr.data-index]="ii"
-            (click)="toggleItem($event)"
+            (click)="toggleItem(wish)"
             > {{wish.wishText}}
           </label>
         </div>
