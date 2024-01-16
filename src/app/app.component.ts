@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { WishItem } from '../shared/models/wishItem';
+import { WishFilterCallBack } from '../shared/types/types';
 
 @Component({
   selector: 'app-root',
@@ -16,5 +17,5 @@ export class AppComponent {
 
   listFilter: number = 0;
 
-  filter: any = () => {};
+  filter: WishFilterCallBack = (item: WishItem) => { return true;};
 }

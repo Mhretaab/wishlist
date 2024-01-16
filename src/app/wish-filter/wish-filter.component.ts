@@ -1,8 +1,9 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, OnInit, Input, Output } from '@angular/core';
 import { WishItem } from '../../shared/models/wishItem';
+import { WishFilterCallBack } from '../../shared/types/types';
 
 const filters = [
-  (item: WishItem) => item,
+  (item: WishItem) => item === item,
   (item: WishItem) => !item.isCompleted,
   (item: WishItem) => item.isCompleted
 ]
@@ -14,15 +15,17 @@ const filters = [
 })
 export class WishFilterComponent implements OnInit{
   
-  @Output() filter = new EventEmitter<any>();
+  @Input() filter: WishFilterCallBack = (item: WishItem) => { return true;};
+  @Output() filterChange = new EventEmitter<WishFilterCallBack>();
 
   listFilter: number = 0;
 
   ngOnInit(): void {
-    this.changeFilter(0);
+    this.updateFilter(0);
   }
 
-  changeFilter(value: any): void {
-    this.filter.emit(filters[value]);
+  updateFilter(value: any): void {
+    this.filter = filters[value];
+    this.filterChange.emit(this.filter);
   }
 }
