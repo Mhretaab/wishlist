@@ -25,7 +25,7 @@ export class AppComponent {
 
   title = 'wishlist';
 
-  get visibleWishes(): WishItem[] {
+  get visibleItems(): WishItem[] {
     return this.wishes.filter(filters[this.listFilter]);
   };
 
@@ -34,10 +34,4 @@ export class AppComponent {
     this.wishes.push(new WishItem(this.newWishText));
     this.newWishText = '';
   }
-
-  toggleItem(wishItem: WishItem): void {
-    wishItem.isCompleted = !wishItem.isCompleted;
-    console.log(wishItem);
-  }
-
 }
