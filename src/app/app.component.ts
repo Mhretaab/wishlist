@@ -20,7 +20,7 @@ export class AppComponent {
     new WishItem('Find grass that cuts itself')
   ];
 
-  newWishText = '';
+  
   listFilter: number = 0;
 
   title = 'wishlist';
@@ -28,10 +28,4 @@ export class AppComponent {
   get visibleItems(): WishItem[] {
     return this.wishes.filter(filters[this.listFilter]);
   };
-
-
-  addNewWish(): void {
-    this.wishes.push(new WishItem(this.newWishText));
-    this.newWishText = '';
-  }
 }
