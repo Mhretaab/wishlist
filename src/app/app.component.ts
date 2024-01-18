@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { WishItem } from '../shared/models/wishItem';
 import { WishFilterCallBack } from '../shared/types/types';
+import events from '../shared/services/EventService';
 
 @Component({
   selector: 'app-root',
@@ -16,6 +17,12 @@ export class AppComponent {
   ];
 
   listFilter: number = 0;
+
+  constructor(){
+    events.listen('removeWish', (wishText: any) =>{
+      console.log(wishText);
+    })
+  }
 
   filter: WishFilterCallBack = (item: WishItem) => { return true;};
 }

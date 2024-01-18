@@ -13,8 +13,10 @@
 
   <div class="row mt-3">
     <!-- wish-list is child component and has input wishes bound to visibleItems -->
-    <wish-list
-    [wishes]="wishes.filter(filter)"
-    ></wish-list>
+    <div class="col-sm-4">
+      <wish-list
+      [wishes]="wishes.filter(filter)"
+      ></wish-list>
+    </div>
   </div>
 </div>
