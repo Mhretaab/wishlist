@@ -1,0 +1,15 @@
+<li>
+    <div class="form-check">
+      <label for="" class="form-check-label">
+        <!-- to bind data: javascript property of element inside [] -->
+        <!-- to bind event: event name inside () -->
+        <!-- [attr.data-index] custom attribute -->
+        <!-- $event to pass the event  -->
+        <input 
+            type="checkbox" 
+            class="checkbox" 
+            [checked]="fulfilled" 
+            (click)="toggleFulfilled()"> {{wishText}}
+      </label>
+    </div>
+  </li>

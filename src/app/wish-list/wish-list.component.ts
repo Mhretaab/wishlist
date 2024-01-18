@@ -8,9 +8,4 @@ import { WishItem } from '../../shared/models/wishItem';
 })
 export class WishListComponent {
   @Input() wishes: WishItem[] = [];
-
-  toggleItem(wishItem: WishItem): void {
-    wishItem.isCompleted = !wishItem.isCompleted;
-    console.log(wishItem);
-  }
 }
